@@ -18,11 +18,12 @@ if (s1 == null) s1 = "one";
 
 <form>
   <div>
-    <select name="s1">
-      <option <%= "one".equals(s1) ? "selected" : "" %>>one</option>
-      <option <%= "two".equals(s1) ? "selected" : "" %>>two</option>
-      <option <%= "three".equals(s1) ? "selected" : "" %>>three</option>
-    </select>
+  <input id="r1" type="radio" name="number1" value=<%= "one".equals(s1) ? "selected" : "" %>  />
+  <label for="r1">one</label>
+  <input id="r2" type="radio" name="number2" value=<%= "two".equals(s1) ? "selected" : "" %>  />
+  <label for="r2">two</label>
+  <input id="r3" type="radio" name="number3" value=<%= "three".equals(s1) ? "selected" : "" %>  />
+  <label for="r3">three</label>
   </div>
   
   <div>
