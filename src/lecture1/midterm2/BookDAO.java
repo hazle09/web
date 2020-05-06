@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import lecture1.DB;
+import lecture1.jdbc1.User;
 	
 public class BookDAO {
 	
@@ -30,7 +31,31 @@ public class BookDAO {
 	            return list;
 	        }
 	    }
-	}
+	    public static List<Book> findByName(String name) throws Exception {
+	        String sql = "SELECT b.*, c.categoryName " +
+                    "FROM book b LEFT JOIN category c ON b.categoryId = c.id"+
+	                     "WHERE b.name LIKE ?";
+	        try (Connection connection = DB.getConnection("book");
+	             PreparedStatement statement = connection.prepareStatement(sql)) {
+	            statement.setString(1, name + "%");
+	            try (ResultSet resultSet = statement.executeQuery()) {
+	                ArrayList<Book> list = new ArrayList<Book>();
+	                while (resultSet.next()) {
+	                	Book book = new Book();
+		                book.setId(resultSet.getInt("id"));
+		                book.setTitle(resultSet.getString("Title"));
+		                book.setCategoryId(resultSet.getInt("categoryId"));
+		                book.setPrice(resultSet.getInt("price"));
+		                book.setAuthor(resultSet.getString("author"));
+		                book.setPublisher(resultSet.getString("publisher"));
+		                book.setCategoryName(resultSet.getString("categoryName"));
+		                list.add(book);
+	                }
+	                return list;
+	            }
+	        }
+	    
+	    }}
 
 
 
