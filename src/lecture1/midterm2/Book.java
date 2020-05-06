@@ -9,7 +9,7 @@ public class Book {
 	String publisher;
 	String categoryName;
 	boolean enabled;
-	
+
 	public int getId() {
 		return id;
 	}
