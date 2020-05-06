@@ -1,11 +1,12 @@
 package lecture1.midterm2;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import lecture1.DB;
-import lecture1.jdbc1.User;
+import lecture1.midterm2.Book;
 	
 public class BookDAO {
 	
